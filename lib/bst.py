@@ -32,10 +32,39 @@ class Node:
         if self.left:
             self.left.print_tree()
 
+    def find_min(self, parent):
+        if self.left:
+            return self.left.find_min(self)
+        else:
+            return [parent, self]
+        
     def delete(self, value):
-        if self.value == value:
-            del
+        if self.value > value:
+            if self.right:
+                self.right = self.right.delete(value)
+        elif self.value < value:
+            if self.left:
+                self.left = self.left.delete(value)
+        else:
+            if self.right and self.left:
+                parent, succ = self.left.find_min(self)
 
+                if parent.left == succ:
+                    parent.left = succ.right
+                else:
+                    parent.right = succ.right
+
+                succ.left = self.left
+                succ.right = self.right
+
+                return succ
+            elif self.right:
+                return self.right
+            else:
+                return self.left
+            
+        return self
+    
 class BST:
     def __init__(self):
         self.root = None
@@ -65,7 +94,7 @@ class BST:
         if self.root == None:
             return
 
-        self.root.delete(value)
+        self.root = self.root.delete(value)
         
 if __name__ == "__main__":
     bst = BST()
@@ -77,4 +106,6 @@ if __name__ == "__main__":
     bst.add(8)
     bst.add(2)
     bst.print_tree()
+    bst.delete(3)
+    bst.print_tree()    
     bst.find_min()
