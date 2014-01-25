@@ -21,5 +21,15 @@ class TestBST(unittest.TestCase):
         for val in vals:
             self.bst.add(val)
         
-        self.bst.print_tree()
         self.assertEqual(self.bst.find_min(), 2)
+
+    def test_delete(self):
+        vals = [3, 4, 4, 5, 8, 2]
+
+        for val in vals:
+            self.bst.add(val)
+
+
+        for val in vals:
+            self.bst.delete(val)
+            self.assertFalse(self.bst.has_value(val))
