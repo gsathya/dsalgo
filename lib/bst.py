@@ -33,8 +33,8 @@ class Node:
             self.left.print_tree()
 
     def find_min(self, parent):
-        if self.left:
-            return self.left.find_min(self)
+        if self.right:
+            return self.right.find_min(self)
         else:
             return [parent, self]
 
@@ -62,9 +62,9 @@ class Node:
                 parent, succ = self.left.find_min(self)
 
                 if parent.left == succ:
-                    parent.left = succ.right
+                    parent.left = succ.left
                 else:
-                    parent.right = succ.right
+                    parent.right = succ.left
 
                 succ.left = self.left
                 succ.right = self.right

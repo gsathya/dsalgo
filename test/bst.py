@@ -21,7 +21,7 @@ class TestBST(unittest.TestCase):
         for val in vals:
             self.bst.add(val)
 
-        self.assertEqual(self.bst.find_min(), 2)
+        self.assertEqual(self.bst.find_min(), min(vals))
 
     def test_delete(self):
         vals = [3, 4, 4, 5, 8, 2]
