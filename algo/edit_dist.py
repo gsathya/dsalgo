@@ -18,7 +18,3 @@ def edit_distance(word1, word2):
                               table[i][j-1]+1])
 
     return table[len1][len2]
-
-print "cat", "bat", edit_distance("cat", "bat")
-print "cat", "catt", edit_distance("cat", "catt")
-print "bat", "catt", edit_distance("bat", "catt")            
