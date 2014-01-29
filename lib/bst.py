@@ -23,15 +23,41 @@ class Node:
             else:
                 self.left.add(value)
 
-    def print_tree(self):
+    def print_tree(self, order=None):
+        if order == "inorder":
+            self.print_inorder()
+        if order == "preorder":
+            self.print_preorder()
+        if order == "postorder":
+            self.print_postorder()
+            
+    def print_inorder(self):
         if self.right:
-            self.right.print_tree()
+            self.right.print_inorder()
 
         print self.value
 
         if self.left:
-            self.left.print_tree()
+            self.left.print_inorder()
 
+    def print_preorder(self):
+        print self.value
+
+        if self.right:
+            self.right.print_preorder()
+
+        if self.left:
+            self.left.print_preorder()
+
+    def print_postorder(self):
+        if self.right:
+            self.right.print_postorder()
+
+        if self.left:
+            self.left.print_postorder()
+
+        print self.value
+        
     def find_min(self, parent):
         if self.right:
             return self.right.find_min(self)
@@ -87,9 +113,12 @@ class BST:
         else:
             self.root.add(value)
 
-    def print_tree(self):
+    def print_tree(self, order=None):
         if self.root:
-            self.root.print_tree()
+            if order == None:
+                self.root.print_tree(order="inorder")
+            else:
+                self.root.print_tree(order)
 
     def find_min(self):
         root = self.root
