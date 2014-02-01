@@ -3,7 +3,7 @@ import unittest
 from lib import bst
 from algo import sorted_array_to_bst
 
-class TestBST(unittest.TestCase):
+class TestSortedArrayToBST(unittest.TestCase):
     def setUp(self):
         self.bst = bst.BST()
 
