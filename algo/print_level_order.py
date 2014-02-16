@@ -8,12 +8,13 @@ def print_tree(root):
     
     q.put(root)
     curLevel +=1
+    ans = []
     
     while not q.empty():
         node = q.get()
         curLevel -=1
         
-        print node.value
+        ans.append(node.value)
         
         if node.left:
             q.put(node.left)
@@ -23,6 +24,8 @@ def print_tree(root):
             nextLevel +=1
             
         if curLevel == 0:
-            print "\n"
+            ans.append("\n")
             curLevel = nextLevel
             nextlevel = 0
+
+    print ' '.join([str(i) if type(i)==int else i for i in ans])

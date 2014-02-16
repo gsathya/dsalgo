@@ -76,6 +76,18 @@ class Node:
 
         return False
 
+    def find_height(self):
+        if self.right:
+            height_right = self.right.find_height()
+        else:
+            height_right = 0
+        if self.left:
+            height_left = self.left.find_height()
+        else:
+            height_left = 0
+
+        return 1 + max(height_left, height_right)
+        
     def delete(self, value):
         if self.value > value:
             if self.right:
@@ -142,3 +154,9 @@ class BST:
             return False
 
         return self.root.has_value(value)
+
+    def find_height(self):
+        if self.root == None:
+            return 0
+
+        return self.root.find_height()

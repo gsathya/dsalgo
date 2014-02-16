@@ -23,6 +23,14 @@ class TestBST(unittest.TestCase):
 
         self.assertEqual(self.bst.find_min(), min(vals))
 
+    def test_height(self):
+        vals = [3, 4, 4, 5, 8, 2]
+
+        for val in vals:
+            self.bst.add(val)
+
+        self.assertEqual(self.bst.find_height(), 4)
+
     def test_delete(self):
         vals = [3, 4, 4, 5, 8, 2]
 
