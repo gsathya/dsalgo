@@ -51,3 +51,8 @@ class LinkedList:
                 head = temp
             
             self.head = prev
+
+def print_rev(head):
+    if head:
+        print_rev(head.next)
+        print head.value

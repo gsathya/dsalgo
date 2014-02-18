@@ -87,7 +87,22 @@ class Node:
             height_left = 0
 
         return 1 + max(height_left, height_right)
+
+    def count_leaf_nodes(self):
+        if self.right == None and self.left == None:
+            return 1
         
+        if self.right:
+            right_count = self.right.count_leaf_nodes()
+        else:
+            right_count  = 0
+        if self.left:
+            left_count = self.left.count_leaf_nodes()
+        else:
+            left_count = 0
+            
+        return right_count + left_count
+
     def delete(self, value):
         if self.value > value:
             if self.right:
@@ -160,3 +175,9 @@ class BST:
             return 0
 
         return self.root.find_height()
+
+    def count_leaf_nodes(self):
+        if self.root == None:
+            return 0
+
+        return self.root.count_leaf_nodes()
