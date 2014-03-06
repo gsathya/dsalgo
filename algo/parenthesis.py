@@ -1,19 +1,22 @@
-def gen(n):
-    s1 = ""
-    s2 = ""
+output = []
 
-    for i in range(n):
-        s1 += "("
-        s2 += ")"
+def printParenthis(n):
+    global output
+    output = [0]*(2*n)
+    _print(0,n ,0 ,0)
 
-    _gen("", s1, s2)
-
-def _gen(str, s1, s2):
-    if len(s1) == 0:
-        print str
-
-    for i in range(1, len(s1)+1):
-        temp = str + s1[:i] + s2[:i]
-        _gen(temp, s1[i:], s2[i:])
+def _print(pos, n, open, close):
+    global output
+    if close == n:
+        print ''.join(output)
+        return
         
-gen(3)
+    if open > close:
+        output[pos] = '}'
+        _print(pos+1, n, open, close+1)
+        
+    if open < n:
+        output[pos] = '{'
+        _print(pos+1, n, open+1, close)
+
+printParenthis(2)
