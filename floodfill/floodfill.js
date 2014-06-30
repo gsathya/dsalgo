@@ -6,7 +6,7 @@ var grid = clickableGrid(10, 10, function(el, row, col, i){
     clear();
     el.className='clicked';
 
-    dfs({'x': row,
+    search({'x': row,
          'y': col});
 });
 
@@ -59,7 +59,7 @@ function neighbors(item) {
     return n;
 }
 
-function dfs(start){
+function search(start){
     var search = document.getElementsByName('search');
     search = search[0].checked? "bfs": "dfs";
 
@@ -82,8 +82,7 @@ function dfs(start){
         if (item['y'] < 0 || item['y'] > 9)
             continue;
 
-        //console.log(item['x'], item['y'], item['x']*10+item['y']+1);
-        var el = document.getElementById(item['x']*10+item['y']+1);
+        var el = document.getElementById(item['x']*10 + item['y'] + 1);
         if (el != undefined) {
             elements.push(el);
         }
