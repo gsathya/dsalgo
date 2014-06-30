@@ -15,9 +15,9 @@ document.body.appendChild(grid);
 function clear(){
     elements = [];
     clearInterval(intervalId);
-    
+
     var selectedElements = document.getElementsByClassName('clicked');
-    var i, len = selectedElements.length;    
+    var i, len = selectedElements.length;
     for(i = 0; i < len; i++)
         selectedElements[i].className = '';
 }
@@ -62,7 +62,7 @@ function neighbors(item) {
 function dfs(start){
     var search = document.getElementsByName('search');
     search = search[0].checked? "bfs": "dfs";
-    
+
     var stack = [start];
     var item;
     var visited = {};
@@ -75,7 +75,7 @@ function dfs(start){
             item = stack.shift();
         else
             item = stack.pop();
-            
+
         if (item['x'] < 0 || item['x'] > 9)
             continue;
 
