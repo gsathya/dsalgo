@@ -19,7 +19,7 @@ function clear(){
     var selectedElements = document.getElementsByClassName('clicked');
     var i, len = selectedElements.length;
     for(i = 0; i < len; i++)
-        selectedElements[i].className = '';
+        selectedElements[0].className = '';
 }
 
 function clickableGrid(rows, cols, callback ){
@@ -98,7 +98,7 @@ function dfs(start){
     }
 
     elements.reverse();
-    intervalId = window.setInterval(color, 1);
+    intervalId = window.setInterval(color, 25);
 }
 
 function color() {
