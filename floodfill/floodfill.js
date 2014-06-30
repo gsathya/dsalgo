@@ -17,9 +17,8 @@ function clear(){
     clearInterval(intervalId);
 
     var selectedElements = document.getElementsByClassName('clicked');
-    var i, len = selectedElements.length;
-    for(i = 0; i < len; i++)
-        selectedElements[0].className = '';
+    while (selectedElements.length > 0) 
+        selectedElements[0].className = '';        
 }
 
 function clickableGrid(rows, cols, callback ){
