@@ -65,6 +65,7 @@ function search(start){
     var stack = [];
     if (search == "bfs")
         stack = new Queue;
+
     stack.push(start);
 
     var item;
@@ -72,9 +73,13 @@ function search(start){
 
     visited[JSON.stringify(start)] = 1;
 
-    while (stack.length != 0) {
+
+    while (1) {
         item = stack.pop();
 
+        if (item == undefined)
+            break;
+        
         if (item['x'] < 0 || item['x'] > 9)
             continue;
 
