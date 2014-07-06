@@ -17,8 +17,8 @@ function clear(){
     clearInterval(intervalId);
 
     var selectedElements = document.getElementsByClassName('clicked');
-    while (selectedElements.length > 0) 
-        selectedElements[0].className = '';        
+    while (selectedElements.length > 0)
+        selectedElements[0].className = '';
 }
 
 function clickableGrid(rows, cols, callback ){
@@ -62,18 +62,18 @@ function search(start){
     var search = document.getElementsByName('search');
     search = search[0].checked? "bfs": "dfs";
 
-    var stack = [start];
+    var stack = [];
+    if (search == "bfs")
+        stack = new Queue;
+    stack.push(start);
+
     var item;
     var visited = {};
 
     visited[JSON.stringify(start)] = 1;
 
     while (stack.length != 0) {
-        if (search == "bfs")
-            // this is O(n), what madness!
-            item = stack.shift();
-        else
-            item = stack.pop();
+        item = stack.pop();
 
         if (item['x'] < 0 || item['x'] > 9)
             continue;
