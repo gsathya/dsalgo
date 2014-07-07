@@ -6,14 +6,14 @@ freq = {}
 # running time is O(n)
 with open(sys.argv[1]) as fh:
     for line in fh.readlines():
-        freq[line] = freq.get(line, 0) + 1
+        freq[line] = freq.get(line.strip(), 0) + 1
 
 q = []
 i = 0
-k = sys.argv[2]
+k = int(sys.argv[2])
 
 # running time is O(nlogk)
-for key, value in freq:
+for key, value in freq.items():
     # push first k vars into q
     if i < k:
         heapq.heappush(q, (value, key))
