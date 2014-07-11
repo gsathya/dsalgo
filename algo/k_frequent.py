@@ -27,3 +27,4 @@ for key, value in freq.items():
 while len(q) > 0:
     value, key = heapq.heappop(q)
     print key
+
