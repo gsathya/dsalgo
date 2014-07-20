@@ -62,11 +62,11 @@ function search(start){
     var search = document.getElementsByName('search');
     search = search[0].checked? "bfs": "dfs";
 
-    var stack = [];
+    var container = [];
     if (search == "bfs")
-        stack = new Queue;
+        container = new Queue;
 
-    stack.push(start);
+    container.push(start);
 
     var item;
     var visited = {};
@@ -75,7 +75,7 @@ function search(start){
 
 
     while (1) {
-        item = stack.pop();
+        item = container.pop();
 
         if (item == undefined)
             break;
@@ -95,7 +95,7 @@ function search(start){
         for (var i in n) {
             if (visited[JSON.stringify(n[i])] != 1) {
                 visited[JSON.stringify(n[i])] = 1;
-                stack.push(n[i]);
+                container.push(n[i]);
             }
         }
     }
