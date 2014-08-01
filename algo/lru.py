@@ -1,3 +1,5 @@
+mapping = {}
+    
 class Node:
     def __init__(self, val):
         self.next = None
@@ -10,6 +12,7 @@ class DoublyLinkedList:
 
     def insert(self, val):
         node = Node(val)
+        mapping[val] = node        
         head = self.head
 
         if self.head == None:
