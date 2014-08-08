@@ -6,8 +6,12 @@ var grid = clickableGrid(10, 10, function(el, row, col, i){
     clear();
     el.className='clicked';
 
-    search({'x': row,
-         'y': col});
+    var search = document.getElementsByName('search');
+    if (search[0].checked)
+        bfs({'x':row,'y':col});
+    else
+        dfs({'x':row,'y':col});
+
 });
 
 document.body.appendChild(grid);
@@ -58,14 +62,8 @@ function neighbors(item) {
     return n;
 }
 
-function search(start){
-    var search = document.getElementsByName('search');
-    search = search[0].checked? "bfs": "dfs";
-
-    var container = [];
-    if (search == "bfs")
-        container = new Queue;
-
+function bfs(start) {
+    var container = new Queue();
     container.push(start);
 
     var item;
@@ -73,13 +71,12 @@ function search(start){
 
     visited[JSON.stringify(start)] = 1;
 
-
     while (1) {
         item = container.pop();
 
         if (item == undefined)
             break;
-        
+
         if (item['x'] < 0 || item['x'] > 9)
             continue;
 
@@ -94,9 +91,48 @@ function search(start){
         var n = neighbors(item);
         for (var i in n) {
             if (visited[JSON.stringify(n[i])] != 1) {
-                visited[JSON.stringify(n[i])] = 1;
                 container.push(n[i]);
+                visited[JSON.stringify(n[i])] = 1;
             }
+        }
+    }
+
+    elements.reverse();
+    intervalId = window.setInterval(color, 25);
+}
+
+function dfs(start) {
+    var container = []
+    container.push(start);
+
+    var item;
+    var visited = {};
+
+    while (1) {
+        item = container.pop();
+
+        if (item == undefined)
+            break;
+
+        if (item['x'] < 0 || item['x'] > 9)
+            continue;
+
+        if (item['y'] < 0 || item['y'] > 9)
+            continue;
+
+        if (visited[JSON.stringify(item)] == 1)
+            continue;
+
+        visited[JSON.stringify(item)] = 1;
+
+        var el = document.getElementById(item['x']*10 + item['y'] + 1);
+        if (el != undefined) {
+            elements.push(el);
+        }
+
+        var n = neighbors(item);
+        for (var i in n) {
+            container.push(n[i]);
         }
     }
 
