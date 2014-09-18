@@ -3,9 +3,7 @@ from collections import deque, defaultdict
 
 n = int(raw_input())
 m = int(raw_input())
-connections = m
 
-sum = 0
 graph = defaultdict(list)
 visited = {}
 
