@@ -1,27 +1,25 @@
 def atof(ip):
     negative = False
-    i = 0
+    start_pos = 0
     
     if ip[0] == '-':
         negative = True
-        i = 1
-
+        start_pos = 1
     
     multiply = 10
     ans = 0.0
-    dec = 0
+    decimal_place = 0
     
-    while i < len(ip):
-        if ip[i] == '.':
-            dec = len(ip) - i - 1
+    for pos in range(start_pos, len(ip)):
+        if ip[pos] == '.':
+            decimal_place = len(ip) - pos - 1
         else:
-            ans = ans*multiply + ord(ip[i]) - ord('0')
-        i +=1
+            ans = ans*multiply + ord(ip[pos]) - ord('0')
 
     if negative:
         ans *= -1
         
-    for i in range(dec):
+    for i in range(decimal_place):
         ans = ans/10    
 
     return ans
