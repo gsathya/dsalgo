@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 class Node:
     """Node class as part of tri-nary tree
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def convert(num):
     """Convert a number in string format to a long
 
