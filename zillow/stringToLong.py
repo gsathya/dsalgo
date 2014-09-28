@@ -1,5 +1,5 @@
 def convert(num):
-    """Convert a given number in string format to a long
+    """Convert a number in string format to a long
 
     Keyword arguments:
     num -- number to be converted (string)
@@ -12,6 +12,7 @@ def convert(num):
     if not num:
         raise ValueError("No input given")
 
+    # return if number is already in long format
     if isinstance(num, long):
         return num
 
@@ -23,7 +24,8 @@ def convert(num):
 
     negative = False
     start_pos = 0
-    
+
+    # check if number is negative
     if num[0] == '-':
         negative = True
         start_pos = 1
@@ -32,6 +34,7 @@ def convert(num):
     ans = 0
     
     for pos in range(start_pos, len(num)):
+        # subtract from '0' to get normalize ascii and get the value
         ans = ans*multiply + ord(num[pos]) - ord('0')
 
     if negative:
