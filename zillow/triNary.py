@@ -4,9 +4,9 @@ class Node:
     """Node class as part of tri-nary tree
 
     self.value  -- value of current node
-    self.right  -- right node (Node)
-    self.left   -- left node (Node)
-    self.middle -- middle node (Node)
+    self.right  -- pointer to right node (Node)
+    self.left   -- pointer to left node (Node)
+    self.middle -- pointer to middle node (Node)
     """
 
     def __init__(self, value):
@@ -189,7 +189,12 @@ class Tree:
 
         Keyword arguments:
         value -- value to be inserted
+
+        Exceptions: if value is None raises ValueError
         """
+
+        if value == None:
+            raise ValueError("Need value to insert into Tree")
 
         if not self.root:
             self.root = Node(value)

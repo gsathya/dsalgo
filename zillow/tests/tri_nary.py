@@ -40,3 +40,7 @@ class TrinaryTreeTest(unittest.TestCase):
     def test_empty_tree_delete(self):
         # delete from an empty tree
         self.assertRaises(Exception, self.tree.delete, 10)
+
+    def test_empty_insert(self):
+        # insert None into tree
+        self.assertRaises(ValueError, self.tree.insert, None)
