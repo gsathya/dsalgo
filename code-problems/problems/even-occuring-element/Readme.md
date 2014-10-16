@@ -1,6 +1,8 @@
 # Find Even Occurring Element
 
-Given an integer array, one element occurs even number of times and all others have odd occurrences. Find the element with even occurrences.
+Given an integer array, one element occurs even number of times and
+all others have odd occurrences. Find the element with even
+occurrences.
 
 ## Source
 
